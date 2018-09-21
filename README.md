@@ -1,128 +1,39 @@
-- Chazel's working for everything using arrays of booleans!
-- Queries work for any time and key values and properly calculates counts
+# 1D Total Visibility-Index Calculation
 
-BUILDING STRUCT:
+Developed and implemented by the <a href=http://algoparc.ics.hawaii.edu/>Algorithms and Parallel Computing (AlgoPARC) research group</a> at the University of Hawai'i at Manoa.
 
-- Don't build prefixSums list yet, need to implement this...
-- Don't build lookup tables yet
-
-NEXT STEP:
-
-- Instead of using bits, use ints and shift values into them
-  - With this, 32 bits are saved to 1 int value
-  - For each int, save a prefix sum count of all bits leading up to it
-
-- Build lookup tables for every 32-bit combination?
-- After finding prefix sum of leading ints, mask out necessary bits and use lookup table
-
-EXPERIMENTS:
-
-- Find out if lookup tables are worth it: Better to just scan the last 32 bits (or 16 bits if use short?)
-- Compare build & query performance for different configs
-- Compare build and query performance vs. AOT (seq. and parallel)
-
-FUTURE STUFF:
-
-- PARALLELIZE!!
-- Read papers and think of applications of this, can we do everything AOT can do??
-- What about using Hamming weight isntead of lookup table?
-- popcnt primitive usable instead?  We can mask out unwanted bits and popcnt!
-  - build bitmask as (1 << index) - 1
-  - mask out unwanted bits as (mask AND int)
-  - Then just use popcnt, hamming weight, or lookup table!
-
-WORK SCHEDULE
-
-TASK                           -     TIME NEEDED
-
-1 Put code on bitbucket          -        DONE
-
-2 Try bits vs. bools (seq)              
-
- - Build tree with bits       -        2 hr
- - Save block prefix sum      -        1.5 hr
- - total                      -        3.5 hr
-
-3 Basic query with bits      -        3 hr
-
- - Try popcnt with mask       -        1 hr
- - Try lookup tables          -        1 hr
- - total                        -        5 hr
-
-4 Basic parallel version         -        2 hr
-
-5 Add mergepath for top levels   -        3 hr
-
-6 Integrate into vis-code        -        2 hr
-
-7 Get new results/graphs/etc.    -        4-5 hr
-
-Priorities:
-
-MUST DO:
-
-4, 6, 7 - Total 9-10 hrs
+This is an implementation of the algorithms and datastructures used and described in the papers:
 
 
-Need to do:
+## Algorithms implemented in the code
 
-2a, 2b, 3 - Total 6.5 hrs
+The code contains three implementations that each solve the 1D total visibility-index problem.  They all use the divide-and-conquer method described in the paper, but each solve the line segment intersection subproblem in a different way.
 
+PLANE SWEEP (sweep):
+The 'sweep' method is only implemented sequentially and, overall, performs the worst.  It uses a plane sweep approach to solving the segment intersection problem
 
-Would like to:
+ARRAY-OF-TREES (visAoT):
+The visAoT method uses the array-of-trees persistent datastructure solve the segment intersection problem.  The implementation can be executed in parallel and performs quite well.  
 
-3a, 3b  -  Total 2 hrs
+LINEAR PARALLEL (LinPar):
+The 'linPar' method uses the succinct datastructure that uses bits to create a persistent datastructure that we use to solve the segment intersection problem.  It uses only O(N) space, and, overall, performs better than the other two approaches.
 
+## Using the code
 
-Maybe if time:
+The code is organized into source code and a couple of sample scripts.  Below is an overview of the source code organization in the 'src/' directory:
 
-5         - Total 3 hrs (maybe more)
+- Makefile: builds executables for all three methods.
+- sweep.cpp: the main function that runs the planesweep method.
+- mainAoT.cpp: the main function that runs the AoT method.
+- linPar.cpp: the main function that runs the LinPar method.
+- buildSynthetic.h: contains code to create synthetic datasets.
+- converxhull.h/.cpp: files to compute the convex hull, used to update critical rays.
+- vis-succinct.h/cpp: functions used by the linPar method to compute segment intersection.
+- visAoT.h/.cpp: functions used by the AoT mehtod to compute segment intersection.
+- SimpleRBI.h/.cpp: functions used by the sweep method to compute segment intersection.
+- chazel/: directory containing helper functions used by linPar for bit manipulation and packing.
+- data/: directory containing datatypes used by the AoT method datastructures.
 
-Order of work: 
-
-- DONE build repo 
-- DONE Build tree with bits
-- DONE Basic query, scan all bits for prefix sum (seq)
-
-CHECKPOINT - Is it worth using bits vs. bools?
-YES.  Using popcnt on all, 60-400% faster for query, slightly slower to build though
-
-- DONE Save prefix sums while building
-- DONE Use prefix sums for querying
-
-CHECKPOINT - Prefix sums worth it?  bits vs. bools?
-YES! Prefix sums reduces Q significantly!  
-
-- Try popcount vs. scan
-- Try lookup tables vs. popcnt or scan
-
-Lowering priority to try these, is already quite fast with popcount and prefix sums list
-
-CONTINUE
-
-- DONE Make current fastest version parallel (BASIC)
-- DONE First version: calculate prefix sums sequentially as well
-
-CHECKPOINT -  How much faster is paralell tree building?  What about querying?
-
-On 4-core (with HTT), Maximum speedup building tree: 3.23,
-max speedup querying: 4.70
-
-IF HAVE TIME
-
-- DONE Further imrpove building parallelism with Mergepath for upper merge levels
-
-CONTINUE 
-
-- DONE Eval parallel speedup on cluster, better than AOT??
-
-Not much speedup on cluster.  Need mergepath and better query parallelization?
-
-Improved build time speedup.  Added mergepath and parallel prefix sum calculation.  Max speedup 10.4 with 16 threads on cluster
-
-CONTINUE
-
-- Integrate into vis code
-- Get results on all hardware & datasets
+There are also some scripts included in the 'scripts/' directory.  They simply run each implementation for different input sizes and number of parallel execution threads.
 
 
