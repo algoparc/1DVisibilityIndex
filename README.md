@@ -8,6 +8,7 @@ P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, an
 
 P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, and C. Tsirogiannis. An Efficient Algorithm for the 1D Total Visibility-Index Problem and its Parallelization. In the Journal of Experimental Algorithms (JEA), Volume 23, Article No. 2.3, 2018. 
 
+
 ## Algorithms implemented in the code
 
 The code contains three implementations that each solve the 1D total visibility-index problem.  They all use the divide-and-conquer method described in the paper, but each solve the line segment intersection subproblem in a different way.
@@ -16,10 +17,10 @@ PLANE SWEEP (sweep):
 The 'sweep' method is only implemented sequentially and, overall, performs the worst.  It uses a plane sweep approach to solving the segment intersection problem
 
 ARRAY-OF-TREES (visAoT):
-The visAoT method uses the array-of-trees persistent datastructure solve the segment intersection problem.  The implementation can be executed in parallel and performs quite well.  
+The visAoT method uses the array-of-trees persistent data structure solve the segment intersection problem.  The implementation can be executed in parallel and performs quite well.  
 
 LINEAR PARALLEL (LinPar):
-The 'linPar' method uses the succinct datastructure that uses bits to create a persistent datastructure that we use to solve the segment intersection problem.  It uses only O(N) space, and, overall, performs better than the other two approaches.
+The 'linPar' method uses the succinct datastructure that uses bits to create a persistent data structure that we use to solve the segment intersection problem.  It uses only O(N) space, and, overall, performs better than the other two approaches.
 
 ## Using the code
 
@@ -50,7 +51,7 @@ The code is organized into source code and a couple of sample scripts.  Below is
 - buildSynthetic.h: contains code to create synthetic datasets.
 - converxhull.h/.cpp: files to compute the convex hull, used to update critical rays.
 - vis-succinct.h/cpp: functions used by the linPar method to compute segment intersection.
-- visAoT.h/.cpp: functions used by the AoT mehtod to compute segment intersection.
+- visAoT.h/.cpp: functions used by the AoT method to compute segment intersection.
 - SimpleRBI.h/.cpp: functions used by the sweep method to compute segment intersection.
 - chazel/: directory containing helper functions used by linPar for bit manipulation and packing.
 - data/: directory containing datatypes used by the AoT method datastructures.
