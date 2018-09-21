@@ -39,7 +39,7 @@ This requires that a g++ compiler is installed and available.  Additionally, the
 
 Each executable creates a random synthetic dataset of the given size and computes the total visibility-index on it.  It repeats this a number of times and outputs the average execution time.  The number of runs is given by the ITERS declaration at the top of each main file.  To change the type of synthetic dataset, simply change the "buildRandom()" function call to one that builds the desired dataset (buildFlat() or buildParabolic()) and re-build the executable.
 
-# Code organization
+## Code organization
 
 The code is organized into source code and a couple of sample scripts.  Below is an overview of the source code organization in the 'src/' directory:
 
@@ -58,6 +58,6 @@ The code is organized into source code and a couple of sample scripts.  Below is
 There are also some scripts included in the 'scripts/' directory.  They simply run each implementation for different input sizes and number of parallel execution threads.
 
 
-# Questions
+### Questions
 
 For questions about this code or if you have any issues building or running it, please contact Ben Karsin at karsin@hawaii.edu.
