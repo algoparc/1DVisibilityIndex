@@ -25,7 +25,7 @@ Copyright 2016-2018 Ben Karsin, Nodari Sitchinava
 #include<algorithm>
 #include"buildSynthetic.h"
 
-#define ITERS 5
+#define ITERS 10
 
 
 int main(int argc, char* argv[]) {

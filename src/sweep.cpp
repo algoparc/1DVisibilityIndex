@@ -24,8 +24,7 @@ Copyright 2016-2018 Ben Karsin, Nodari Sitchinava
 #include<climits>
 #include"buildSynthetic.h"
 
-//#define SIZE 524288
-#define ITERS 5
+#define ITERS 10
 
 int main(int argc, char* argv[]) {
 
