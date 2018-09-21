@@ -23,6 +23,23 @@ The 'linPar' method uses the succinct datastructure that uses bits to create a p
 
 ## Using the code
 
+To build the executables for each algorithm, simply go to the ./src/ subdirectory and use:
+> make
+
+This requires that a g++ compiler is installed and available.  Additionally, the AoT and LinPar methods require that openMP is installed on the system.  Once built, simply run them with the following usage:
+
+- plane sweep
+> ./sweep <size (2^x)>
+
+- array-of-trees
+> ./visAoT <size (2^x)> <# threads>
+
+- linPar
+> ./linPar <size (2^x)> <# threads>
+
+
+# Code organization
+
 The code is organized into source code and a couple of sample scripts.  Below is an overview of the source code organization in the 'src/' directory:
 
 - Makefile: builds executables for all three methods.
