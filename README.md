@@ -4,9 +4,9 @@ Developed and implemented by the <a href=http://algoparc.ics.hawaii.edu/>Algorit
 
 This is an implementation of the algorithms and datastructures used and described in the papers:
 
-P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, and C. Tsirogiannis. An Efficient Algorithm for the 1D Total Visibility-Index Problem. In Proceedings of the Seventeenth Workshop on Algorithm Engineering and Experiments (ALENEX), 2017.
+<a href=https://algoparc.ics.hawaii.edu/pubs/17-alenex.pdf>P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, and C. Tsirogiannis. An Efficient Algorithm for the 1D Total Visibility-Index Problem. In Proceedings of the 19th Meeting on Algorithm Engineering and Experiments (ALENEX), pages 218-231, 2017</a>.
 
-P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, and C. Tsirogiannis. An Efficient Algorithm for the 1D Total Visibility-Index Problem and its Parallelization. In the Journal of Experimental Algorithms (JEA), Volume 23, Article No. 2.3, 2018. 
+<a href=https://algoparc.ics.hawaii.edu/pubs/18-jea.pdf>P. Afshani, M. de Berg, H. Casanova, B. Karsin, C. Lambrechts, N. Sitchinava, and C. Tsirogiannis. An Efficient Algorithm for the 1D Total Visibility-Index Problem and its Parallelization. In the Journal of Experimental Algorithms (JEA), Volume 23(2): 2.3:1-2.3:23 (2018)</a>. 
 
 
 ## Algorithms implemented in the code
